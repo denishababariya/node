@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Task</title>
+</head>
+<body>
+    <h1>Update Task</h1>
+    <form action="/update_task/<%= task.id %>" method="POST">
+        <!-- Task Name -->
+        <label for="taskname">Task Name:</label>
+        <input type="text" id="taskname" name="taskname" value="<%= task.taskname %>"><br>
+
+        <!-- Employee ID -->
+        <label for="employee">Employee ID:</label>
+        <input type="text" id="employee" name="employee" value="<%= task.employee %>"><br>
+
+        <!-- Start Date -->
+        <label for="startdate">Start Date:</label>
+        <input type="date" id="startdate" name="startdate" value="<%= task.startdate %>"><br>
+
+        <!-- End Date -->
+        <label for="enddate">End Date:</label>
+        <input type="date" id="enddate" name="enddate" value="<%= task.enddate %>"><br>
+
+        <!-- Submit Button -->
+        <button type="submit">Update Task</button>
+    </form>
+</body>
+</html>

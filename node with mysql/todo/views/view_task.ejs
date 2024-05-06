@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>View Task</h1>
+    <table border="2">
+        <tr>
+            <th>Task Number</th>
+            <th>Task Name</th>
+            <th>Employee ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Actions</th>
+        </tr>
+        <% let taskNumber = 1; %>
+        <% result.forEach((ele)=> { %>
+            <tr>
+                <td>
+                    <%= taskNumber %>
+                </td>
+                <td>
+                    <%= ele.taskname %>
+                </td>
+                <td>
+                    <%= ele.employee %>
+                </td>
+                <td>
+                    <% var startDate = new Date(ele.startdate); %>
+                    <%= startDate.getDate() %>-<%= startDate.getMonth() + 1 %>-<%= String(startDate.getFullYear()).slice(-2) %>
+                </td>
+                <td>
+                    <% var endDate = new Date(ele.enddate); %>
+                    <%= endDate.getDate() %>-<%= endDate.getMonth() + 1 %>-<%= String(endDate.getFullYear()).slice(-2) %>
+                </td>
+                <td>
+                    <!-- Update link -->
+                    <a href="/update_task/<%= ele.id %>">Update</a>
+                    <!-- Delete form -->
+                    <form action="/delete_task" method="post">
+                        <input type="hidden" name="task_id" value="<%= ele.id %>">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <% taskNumber++; %>
+        <% }) %>
+    </table>
+    <button onclick='location.href="/adminDashboard"'>Back</button>
+</body>
+</html>

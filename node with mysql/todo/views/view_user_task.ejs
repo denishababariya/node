@@ -1,0 +1,42 @@
+<!-- view_user_tasks.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Tasks</title>
+</head>
+<body>
+    <h1>User Tasks</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Task Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Actions</th> <!-- Add column for actions -->
+            </tr>
+        </thead>
+        <tbody>
+            <% tasks.forEach(function(task) { %>
+                <tr>
+                    <td><%= task.taskname %></td>
+                    <td><%= task.startdate %></td>
+                    <td><%= task.enddate %></td>
+                    <td>
+                        <form action="/accept_task" method="post" style="display: inline;">
+                            <input type="hidden" name="task_id" value="<%= task.id %>">
+                            <button type="submit">Accept</button>
+                        </form>
+                        <form action="/decline_task" method="post" style="display: inline;">
+                            <input type="hidden" name="task_id" value="<%= task.id %>">
+                            <button type="submit">Decline</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>
